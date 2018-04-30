@@ -1,0 +1,23 @@
+{
+  "name": "mlb-game-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronnied1222/MLB-Game-Data.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ronnied1222/MLB-Game-Data/issues"
+  },
+  "homepage": "https://github.com/ronnied1222/MLB-Game-Data#readme",
+  "dependencies": {
+    "aws-sdk": "^2.229.1",
+    "d3": "^5.1.0"
+  }
+}

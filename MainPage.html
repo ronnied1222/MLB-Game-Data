@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <p>
+        <select id="team">
+            <option value="Diamondbacks">Arizona Diamondbacks</option>
+            <option value="Braves">Atlanta Braves </option>
+            <option value="Orioles">Baltimore Orioles</option>
+            <option value="Red Sox">Boston Red Sox</option>
+            <option value="White Sox">Chicago White Sox</option>
+            <option value="Cubs">Chicago Cubs</option>
+            <option value="Reds">Cincinnati Reds</option>
+            <option value="Indians">Cleveland Indians</option>
+            <option value="Rockies">Colorado Rockies</option>
+            <option value="Tigers">Detroit Tigers</option>
+            <option value="Astros">Houston Astros</option>
+            <option value="Royals">Kansas City Royals</option>
+            <option value="Angels">Los Angeles Angels</option>
+            <option value="Dodgers">Los Angeles Dodgers</option>
+            <option value="Marlins">Miami Marlins</option>
+            <option value="Brewers">Milwaukee Brewers</option>
+            <option value="Twins">Minnesota Twins</option>
+            <option value="Yankees">New York Yankees</option>
+            <option value="Mets">New York Mets</option>
+            <option value="Athletics">Oakland Athletics</option>
+            <option value="Phillies">Philadelphia Phillies</option>
+            <option value="Pirates">Pittsburgh Pirates</option>
+            <option value="Padres">San Diego Padres</option>
+            <option value="Giants">San Francisco Giants</option>
+            <option value="Mariners">Seattle Mariners</option>
+            <option value="Cardinals">St. Louis Cardinals</option>
+            <option value="Rays">Tampa Bay Rays</option>
+            <option value="Rangers">Texas Rangers</option>
+            <option value="Blue Jays">Toronto Blue Jays</option>
+            <option value="Nationals">Washington Nationals</option>
+        </select>
+        </br>
+        <button onclick="generateData()" id="button">Submit</button>
+
+    </p>
+    <div class="results">
+
+    </div>
+
+        <script>
+            var stats = [];
+            AWS.config.update(
+                {region:'us-east-1', endpoint: 'http://dynamodb.us-east-1.amazonaws.com',
+                accessKeyId:'AKIAIR7VFFT7YQY5PE4A',
+                secretAccessKey: '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'});
+            var teamWins;
+            var teamLosses;
+            
+
+            function wins(){
+                var docClient = new AWS.DynamoDB.DocumentClient();
+                var params = {
+                    ProjectionExpression: "#winner",
+                    FilterExpression: '#winner = :team',
+                    TableName: "MLBGames",
+                    ExpressionAttributeNames: {
+                        "#winner" : "Winning Team"
+                    },
+                    ExpressionAttributeValues: {
+                        ':team' : document.getElementById("team").value.trim()
+                    }
+                };
+
+
+                docClient.scan(params, function(err, data) {
+                    if (err) {
+                        console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+                    } else {
+                        teamWins = data.Items.length;
+                    }
+                });
+
+            }
+
+            function losses(){
+                var docClient = new AWS.DynamoDB.DocumentClient();
+                var params = {
+                    ProjectionExpression: "#winner",
+                    FilterExpression: '#winner = :team',
+                    TableName: "MLBGames",
+                    ExpressionAttributeNames: {
+                        "#winner" : "Losing Team"
+                    },
+                    ExpressionAttributeValues: {
+                        ':team' : document.getElementById("team").value.trim()
+                    }
+                };
+
+
+                docClient.scan(params, function(err, data) {
+                    if (err) {
+                        console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+                    } else {
+                        teamLosses = data.Items.length;
+                    }
+                });
+
+            }
+
+            function generateData(){
+               wins();
+               losses();
+               draw();
+            }
+
+            function draw(){
+                stats.push(teamWins);
+                stats.push(teamLosses);
+
+                var data = [30, 86, 168, 281, 303, 365];
+
+                d3.select(".results")
+                    .selectAll("div")
+                    .data(stats)
+                    .enter()
+                    .append("div")
+                    .style("width", function(d) { return d + "0px"; })
+                    .text(function(d) { return d; });
+
+                teamWins = 0;
+                teamLosses = 0;
+            }
+        </script>
+
+</body>
+</html>

@@ -5,10 +5,12 @@
     <title>Homepage</title>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
     <link rel="stylesheet" href="main.css">
-
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src="https://d3js.org/d3-selection.v1.min.js"></script>
 </head>
 <body>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+
     <p>
         <select id="team">
             <option value="Diamondbacks">Arizona Diamondbacks</option>
@@ -58,7 +60,7 @@
                 secretAccessKey: '7eHLF8DcalO1qsok3OgpOGd6gEmAHZOLLGoK91ky'});
             var teamWins;
             var teamLosses;
-            
+
 
             function wins(){
                 var docClient = new AWS.DynamoDB.DocumentClient();

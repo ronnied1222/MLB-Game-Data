@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="420dc318-4af5-4602-a65e-435cf4baa917" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MainPage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/teamPage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainPage.html" afterPath="$PROJECT_DIR$/MainPage.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +19,8 @@
       <file leaf-file-name="MainPage.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+            <state relative-caret-position="135">
+              <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -147,12 +144,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1525030153944</updated>
-      <workItem from="1525030155153" duration="11243000" />
+      <workItem from="1525030155153" duration="11626000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11243000" />
+    <option name="totallyTimeSpent" value="11626000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-960" y="-115" width="960" height="992" extended-state="0" />
@@ -187,7 +184,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/MainPage.html</url>
-          <line>115</line>
+          <line>117</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -215,8 +212,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+        <state relative-caret-position="135">
+          <caret line="9" column="67" lean-forward="false" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="67" />
           <folding />
         </state>
       </provider>

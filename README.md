@@ -40,28 +40,9 @@ When the user enters the team it wants to see, the database is queried through a
 	
 ### How to Run It
 
-Create DynamoDB table called 'MLBGames' with schema:<br />
-	{<br />
-    	"Table": {<br />
-        	"AttributeDefinitions": [<br />
-            	{<br />
-                	"AttributeName": "gameID",<br />
-                	"AttributeType": "S"<br />
-            	}<br />
-        	],<br />
-        	"TableName": "MLBGames",<br />
-        	"KeySchema": [<br />
-            	{<br />
-               		"AttributeName": "gameID",<br />
-                	"KeyType": "HASH"<br />
-            	}<br />
-        	],<br />
-        	"TableStatus": "ACTIVE",<br />
-        	"CreationDateTime": 1523836695.374,<br />
-        	"ProvisionedThroughput": {<br />
-            	"NumberOfDecreasesToday": 0,<br />
-            	"ReadCapacityUnits": 10,<br />
-            	"WriteCapacityUnits": 10<br />
-        	},<br />
-    	}<br />
-
+1. Create DynamoDB table called 'MLBGames' 
+2. All Lamdba function in the lambda function folder
+3. Create API Gateway using the API Overview section
+4. Deploy API and change URL variable in MainPage.html
+5. Run mlb.py to generate data
+6. Run MainPage.html to see results.

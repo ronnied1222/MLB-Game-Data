@@ -40,8 +40,8 @@ When the user enters the team it wants to see, the database is queried through a
 	
 ## How to Run It
 
-	- Create DynamoDB table called 'MLBGames' with schema:
-		- {
+	* Create DynamoDB table called 'MLBGames' with schema:
+		* {
     	"Table": {
         	"AttributeDefinitions": [
             	{

@@ -12,20 +12,20 @@ When the user enters the team it wants to see, the database is queried through a
 ## Services Used
 
 - EC2
-- Route 53 hosted [here](www.ronalddavis.tech)
+- Route 53 hosted <a href="http://www.ronalddavis.tech">Here</a>
 - DynamoDB
 - API Gateway
 - Lambda
 
 ## Youtube Video Demo
 
-[Video Demo](www.youtube.com)
+<a href="http://www.youtube.com">Video Demo</a>
 
 ## Architecture Diagram
 
 ![Screenshot](cloudcraft.png)
 
-### API Overview
+## API Overview
 
 /awaylosses/{teamName}	<br />
 /awaywins/{teamName}<br />
@@ -38,7 +38,7 @@ When the user enters the team it wants to see, the database is queried through a
 /winslesseq/{teamName}{runs}<br />
 /losseslesseq/{teamName}{runs}<br />
 	
-### How to Run It
+## How to Run It
 
 1. Create DynamoDB table called 'MLBGames' 
 2. All Lamdba function in the lambda function folder

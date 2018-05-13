@@ -5,10 +5,12 @@ import boto3
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('MLBGames')
+from datetime import datetime
 
 def run():
+    currentMonth = datetime.now().month
 
-    month = mlbgame.games(2018, 3)
+    month = mlbgame.games(2018, currentMonth)
     games = mlbgame.combine_games(month)
 
     for game in games:

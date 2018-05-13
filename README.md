@@ -27,4 +27,41 @@ When the user enters the team it wants to see, the database is queried through a
 
 ## API Overview
 
+	/awaylosses/{teamName}
+	/awaywins/{teamName}
+	/gameslost/{teamName}
+	/gameswon/{teamName}
+	/homelosses/{teamName}
+	/homewins/{teamName}
+	/winsgreater/{teamName}{runs}
+	/lossesgreater/{teamName}{runs}
+	/winslesseq/{teamName}{runs}
+	/losseslesseq/{teamName}{runs}
+	
 ## How to Run It
+
+	- Create DynamoDB table called 'MLBGames' with schema:
+		- {
+    	"Table": {
+        	"AttributeDefinitions": [
+            	{
+                	"AttributeName": "gameID",
+                	"AttributeType": "S"
+            	}
+        	],
+        	"TableName": "MLBGames",
+        	"KeySchema": [
+            	{
+               		"AttributeName": "gameID",
+                	"KeyType": "HASH"
+            	}
+        	],
+        	"TableStatus": "ACTIVE",
+        	"CreationDateTime": 1523836695.374,
+        	"ProvisionedThroughput": {
+            	"NumberOfDecreasesToday": 0,
+            	"ReadCapacityUnits": 10,
+            	"WriteCapacityUnits": 10
+        	},
+    	}
+

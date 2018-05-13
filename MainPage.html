@@ -3,136 +3,548 @@
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
     <link rel="stylesheet" href="main.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="require.js"></script>
+
 </head>
 <body>
 
-    <p>
-        <select id="team">
-            <option value="Diamondbacks">Arizona Diamondbacks</option>
-            <option value="Braves">Atlanta Braves </option>
-            <option value="Orioles">Baltimore Orioles</option>
-            <option value="Red Sox">Boston Red Sox</option>
-            <option value="White Sox">Chicago White Sox</option>
-            <option value="Cubs">Chicago Cubs</option>
-            <option value="Reds">Cincinnati Reds</option>
-            <option value="Indians">Cleveland Indians</option>
-            <option value="Rockies">Colorado Rockies</option>
-            <option value="Tigers">Detroit Tigers</option>
-            <option value="Astros">Houston Astros</option>
-            <option value="Royals">Kansas City Royals</option>
-            <option value="Angels">Los Angeles Angels</option>
-            <option value="Dodgers">Los Angeles Dodgers</option>
-            <option value="Marlins">Miami Marlins</option>
-            <option value="Brewers">Milwaukee Brewers</option>
-            <option value="Twins">Minnesota Twins</option>
-            <option value="Yankees">New York Yankees</option>
-            <option value="Mets">New York Mets</option>
-            <option value="Athletics">Oakland Athletics</option>
-            <option value="Phillies">Philadelphia Phillies</option>
-            <option value="Pirates">Pittsburgh Pirates</option>
-            <option value="Padres">San Diego Padres</option>
-            <option value="Giants">San Francisco Giants</option>
-            <option value="Mariners">Seattle Mariners</option>
-            <option value="Cardinals">St. Louis Cardinals</option>
-            <option value="Rays">Tampa Bay Rays</option>
-            <option value="Rangers">Texas Rangers</option>
-            <option value="Blue Jays">Toronto Blue Jays</option>
-            <option value="Nationals">Washington Nationals</option>
-        </select>
-        </br>
-        <button onclick="generateData()" id="button">Submit</button>
 
-    </p>
-    <div class="results">
+    <select id="team">
+        <option value="Diamondbacks">Arizona Diamondbacks</option>
+        <option value="Braves">Atlanta Braves </option>
+        <option value="Orioles">Baltimore Orioles</option>
+        <option value="Red Sox">Boston Red Sox</option>
+        <option value="White Sox">Chicago White Sox</option>
+        <option value="Cubs">Chicago Cubs</option>
+        <option value="Reds">Cincinnati Reds</option>
+        <option value="Indians">Cleveland Indians</option>
+        <option value="Rockies">Colorado Rockies</option>
+        <option value="Tigers">Detroit Tigers</option>
+        <option value="Astros">Houston Astros</option>
+        <option value="Royals">Kansas City Royals</option>
+        <option value="Angels">Los Angeles Angels</option>
+        <option value="Dodgers">Los Angeles Dodgers</option>
+        <option value="Marlins">Miami Marlins</option>
+        <option value="Brewers">Milwaukee Brewers</option>
+        <option value="Twins">Minnesota Twins</option>
+        <option value="Yankees">New York Yankees</option>
+        <option value="Mets">New York Mets</option>
+        <option value="Athletics">Oakland Athletics</option>
+        <option value="Phillies">Philadelphia Phillies</option>
+        <option value="Pirates">Pittsburgh Pirates</option>
+        <option value="Padres">San Diego Padres</option>
+        <option value="Giants">San Francisco Giants</option>
+        <option value="Mariners">Seattle Mariners</option>
+        <option value="Cardinals">St. Louis Cardinals</option>
+        <option value="Rays">Tampa Bay Rays</option>
+        <option value="Rangers">Texas Rangers</option>
+        <option value="Blue Jays">Toronto Blue Jays</option>
+        <option value="Nationals">Washington Nationals</option>
+    </select>
+    </br>
+    <button id="compute">Compute</button>
+    <button id="button">Submit</button>
+    Enter a number of runs: <input type="number" name="num">
 
-    </div>
-
-        <script>
-            var stats = [];
-            
-            var teamWins;
-            var teamLosses;
+</p>
+<div class="results">
 
 
-            function wins(){
-                var docClient = new AWS.DynamoDB.DocumentClient();
-                var params = {
-                    ProjectionExpression: "#winner",
-                    FilterExpression: '#winner = :team',
-                    TableName: "MLBGames",
-                    ExpressionAttributeNames: {
-                        "#winner" : "Winning Team"
-                    },
-                    ExpressionAttributeValues: {
-                        ':team' : document.getElementById("team").value.trim()
-                    }
-                };
+</div>
 
+<table>
+    <tr>
+        <th id="t1">
 
-                docClient.scan(params, function(err, data) {
-                    if (err) {
-                        console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
-                    } else {
-                        teamWins = data.Items.length;
-                    }
+        </th>
+        <td class="chart1">
+
+        </td>
+    <tr>
+        <th id="t2">
+
+        </th>
+        <td class="chart2">
+
+        </td>
+        <th id="t3">
+
+        </th>
+        <td class="chart3">
+
+        </td>
+    </tr>
+    <tr>
+        <th id="t4">
+
+        </th>
+        <td class="chart4">
+
+        </td>
+    </tr>
+    <tr>
+        <th id="t5">
+
+        </th>
+        <td class="chart5">
+
+        </td>
+        <th id="t6">
+
+        </th>
+        <td class="chart6">
+
+        </td>
+    </tr>
+    <tr>
+    <th id="t7">
+
+    </th>
+    <td class="chart7">
+
+    </td>
+    <th id="t8">
+
+    </th>
+    <td class="chart8">
+
+    </td>
+</tr>
+</table>
+
+<script>
+
+    window.onload = function () {
+
+        $("#button").click(draw);
+        $("#compute").click(compute);
+
+    };
+
+    var url = 'https://07unsm63s6.execute-api.us-east-1.amazonaws.com/test/';
+
+    var teamWins = 0;
+    function getWins(){
+        var team = document.getElementById("team").value.trim();
+        var stuff;
+        axios.get( url+'gameswon?teamName=' + team)
+            .then(function (response) {
+                teamWins = response.request.responseText;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    var teamLosses = 0;
+    function getLosses(){
+        var team = document.getElementById("team").value.trim();
+        var stuff;
+        axios.get( url+'gameslost?teamName=' + team)
+            .then(function (response) {
+                teamLosses = response.request.responseText;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    var homeWins = 0;
+    function getHomeWins(){
+        var team = document.getElementById("team").value.trim();
+        var stuff;
+        axios.get( url+'homewins?teamName=' + team)
+            .then(function (response) {
+                homeWins = response.request.responseText;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    var homeLosses = 0;
+    function getHomeLosses(){
+        var team = document.getElementById("team").value.trim();
+        var stuff;
+        axios.get( url+'homelosses?teamName=' + team)
+            .then(function (response) {
+                homeLosses = response.request.responseText;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    var awayWins = 0;
+    function getAwayWins(){
+        var team = document.getElementById("team").value.trim();
+        var stuff;
+        axios.get( url+'awaywins?teamName=' + team)
+            .then(function (response) {
+                awayWins = response.request.responseText;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    var awayLosses = 0;
+    function getAwayLosses(){
+        var team = document.getElementById("team").value.trim();
+        var stuff;
+        axios.get( url+'awaylosses?teamName=' + team)
+            .then(function (response) {
+                awayLosses = response.request.responseText;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    var runWinsLessEQ = 0;
+    function getRunWins(){
+        var team = document.getElementById("team").value.trim();
+        var number = document.getElementsByName("num")[0].value;
+        if(Number(number)){
+            var stuff;
+            axios.get( url+'winslessoreq?teamName=' + team + '&runs=' + number)
+                .then(function (response) {
+                    runWinsLessEQ = response.request.responseText;
+                })
+                .catch(function (error) {
+                    console.log(error);
                 });
+        }
 
-            }
+    }
 
-            function losses(){
-                var docClient = new AWS.DynamoDB.DocumentClient();
-                var params = {
-                    ProjectionExpression: "#winner",
-                    FilterExpression: '#winner = :team',
-                    TableName: "MLBGames",
-                    ExpressionAttributeNames: {
-                        "#winner" : "Losing Team"
-                    },
-                    ExpressionAttributeValues: {
-                        ':team' : document.getElementById("team").value.trim()
-                    }
-                };
-
-
-                docClient.scan(params, function(err, data) {
-                    if (err) {
-                        console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
-                    } else {
-                        teamLosses = data.Items.length;
-                    }
+    var runLossesLessEQ = 0;
+    function getRunLosses(){
+        var team = document.getElementById("team").value.trim();
+        var number = document.getElementsByName("num")[0].value;
+        if(Number(number)){
+            var stuff;
+            axios.get( url+'losseslesseq?teamName=' + team + '&runs=' + number)
+                .then(function (response) {
+                    runLossesLessEQ = response.request.responseText;
+                })
+                .catch(function (error) {
+                    console.log(error);
                 });
+        }
+    }
 
+    var runWinsGreater = 0;
+    function getRunWinsG(){
+        var team = document.getElementById("team").value.trim();
+        var number = document.getElementsByName("num")[0].value;
+        if(Number(number)){
+            var stuff;
+            axios.get( url+'winsgreater?teamName=' + team + '&runs=' + number)
+                .then(function (response) {
+                    runWinsGreater = response.request.responseText;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+    }
+
+    var runLossesGreater = 0;
+    function getRunLossesG(){
+        var team = document.getElementById("team").value.trim();
+        var number = document.getElementsByName("num")[0].value;
+        if(Number(number)){
+            var stuff;
+            axios.get( url+'lossesgreater?teamName=' + team + '&runs=' + number)
+                .then(function (response) {
+                    runLossesGreater = response.request.responseText;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    }
+
+    function compute(){
+
+        clear();
+        getWins();
+        getLosses();
+        getHomeLosses();
+        getHomeWins();
+        getAwayWins();
+        getAwayLosses();
+        getRunWins();
+        getRunLosses();
+        getRunWinsG();
+        getRunLossesG();
+    }
+
+    function getMax(data){
+        var max = 0;
+        data.forEach(function(element){
+            if(element.number >= max){
+                max = element.number;
             }
+        });
+        return max;
+    }
 
-            function generateData(){
-               wins();
-               losses();
-               draw();
+    function getMaxPercent(data){
+        var max = 0;
+        data.forEach(function(element){
+            if(element.percent >= max){
+                max = element.percent;
             }
+        });
+        return max;
+    }
 
-            function draw(){
-                stats.push(teamWins);
-                stats.push(teamLosses);
 
-                var data = [30, 86, 168, 281, 303, 365];
+    function clear(){
+        var list = document.getElementsByTagName("td");
+        for (let item of list) {
+            item.innerHTML = "";
+        }
+    }
 
-                d3.select(".results")
-                    .selectAll("div")
-                    .data(stats)
-                    .enter()
-                    .append("div")
-                    .style("width", function(d) { return d + "0px"; })
-                    .text(function(d) { return d; });
+    function draw(){
+        document.getElementById("t1").innerHTML = "Total Wins/Losses";
+        document.getElementById("t2").innerHTML = "Home Wins/Losses";
+        document.getElementById("t3").innerHTML = "Away Wins/Losses";
+        document.getElementById("t4").innerHTML = "Total Win/Loss Percentage";
+        document.getElementById("t5").innerHTML = "Home Win/Loss Percentage";
+        document.getElementById("t6").innerHTML = "Away Win/Loss Percentage";
+        document.getElementById("t7").innerHTML = "Wins/Loss When Scoring <= " + document.getElementsByName("num")[0].value + " runs";
+        document.getElementById("t8").innerHTML = "Wins/Loss When Scoring > " + document.getElementsByName("num")[0].value + " runs";
 
-                teamWins = 0;
-                teamLosses = 0;
-            }
-        </script>
+        var max;
+        var scale;
+        var dataset = [
+            {
+                "type" : "wins",
+                "number" : Number(teamWins)
+            },
+            {
+                "type" : "losses",
+                "number" : Number(teamLosses)
+            },
+
+        ];
+
+
+        max = getMax(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        var winPercentage = Number(teamWins) / (Number(teamWins) + Number(teamLosses));
+        var homeWinPercentage = Number(homeWins) / (Number(homeWins) + Number(homeLosses));
+        var awayWinPercentage = Number(awayWins) / (Number(awayWins) + Number(awayLosses));
+
+        d3.select(".chart1")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart1")
+            .style("width", function(d) { return scale(d.number)*5 + "px"; })
+            .style("font-size", "18px")
+            .text(function(d) { return d.number + " " + d.type; });
+
+        dataset = [];
+        dataset = [
+            {
+                "type" : "wins",
+                "number" : Number(homeWins)
+            },
+            {
+                "type" : "losses",
+                "number" : Number(homeLosses)
+            },
+
+        ];
+
+        max = getMax(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        d3.select(".chart2")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart2")
+            .style("width", function(d) { return scale(d.number)*5 + "px"; })
+            .style("font-size", "18px")
+            .text(function(d) { return d.number + " " + d.type; });
+
+        dataset = [];
+        dataset = [
+            {
+                "type" : "wins",
+                "number" : Number(awayWins)
+            },
+            {
+                "type" : "losses",
+                "number" : Number(awayLosses)
+            },
+
+        ];
+
+        max = getMax(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        d3.select(".chart3")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart3")
+            .style("width", function(d) { return scale(d.number)*5 + "px"})
+            .style("font-size", "18px")
+            .text(function(d) { return d.number + " " + d.type; });
+
+        dataset = [];
+        dataset = [
+            {
+                type : "win",
+                percent : parseInt(winPercentage * 100)
+            },
+            {
+                type : "loss",
+                percent : parseInt(100 - (winPercentage * 100))
+            },
+
+        ];
+
+        max = getMaxPercent(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        d3.select(".chart4")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart4")
+            .style("width", function(d) { return (scale(d.percent)) *5 + "px"})
+            .style("font-size", "18px")
+            .text(function(d) { return d.percent + " " + d.type + "%"; });
+
+        dataset = [];
+        dataset = [
+            {
+                type : "win",
+                percent : parseInt(homeWinPercentage * 100)
+            },
+            {
+                type : "loss",
+                percent : parseInt(100 - (homeWinPercentage * 100))
+            },
+
+        ];
+
+        max = getMaxPercent(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        d3.select(".chart5")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart5")
+            .style("width", function(d) { return (scale(d.percent)) *5 + "px"})
+            .style("font-size", "18px")
+            .text(function(d) { return d.percent + " " + d.type + "%"; });
+
+        dataset = [];
+        dataset = [
+            {
+                type : "win",
+                percent : parseInt(awayWinPercentage * 100)
+            },
+            {
+                type : "loss",
+                percent : parseInt(100 - (awayWinPercentage * 100))
+            },
+
+        ];
+
+        max = getMaxPercent(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        d3.select(".chart6")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart6")
+            .style("width", function(d) { return (scale(d.percent)) *5 + "px"})
+            .style("font-size", "18px")
+            .text(function(d) { return d.percent + " " + d.type + "%"; });
+
+
+        dataset = [];
+        dataset = [
+            {
+                "type" : "wins",
+                "number" : Number(runWinsLessEQ)
+            },
+            {
+                "type" : "losses",
+                "number" : Number(runLossesLessEQ)
+            },
+
+        ];
+
+        max = getMax(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        d3.select(".chart7")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart7")
+            .style("width", function(d) { return scale(d.number)*5 + "px"; })
+            .style("font-size", "18px")
+            .text(function(d) { return d.number + " " + d.type; });
+
+        dataset = [];
+        dataset = [
+            {
+                "type" : "wins",
+                "number" : Number(runWinsGreater)
+            },
+            {
+                "type" : "losses",
+                "number" : Number(runLossesGreater)
+            },
+
+        ];
+
+        max = getMax(dataset);
+        scale = d3.scale.linear().domain([0, max]).range([0, 100]);
+
+        d3.select(".chart8")
+            .selectAll("div")
+            .data(dataset)
+            .enter()
+            .append("div")
+            .attr("class", "chart8")
+            .style("width", function(d) { return scale(d.number)*5 + "px"; })
+            .style("font-size", "18px")
+            .text(function(d) { return d.number + " " + d.type; });
+
+    }
+</script>
 
 </body>
 </html>
+

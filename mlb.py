@@ -8,7 +8,7 @@ table = dynamodb.Table('MLBGames')
 
 def run():
 
-    month = mlbgame.games(2018, 4)
+    month = mlbgame.games(2018, 3)
     games = mlbgame.combine_games(month)
 
     for game in games:

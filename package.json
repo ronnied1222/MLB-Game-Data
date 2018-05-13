@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/ronnied1222/MLB-Game-Data#readme",
   "dependencies": {
-    "aws-sdk": "^2.229.1",
-    "d3": "^5.1.0"
+    "aws-amplify": "^0.3.3",
+    "aws-sdk": "^2.238.1",
+    "axios": "^0.18.0",
+    "d3": "^5.4.0",
+    "node-uuid": ">= 1.4.1"
   }
 }

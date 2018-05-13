@@ -25,7 +25,7 @@ When the user enters the team it wants to see, the database is queried through a
 
 ![Screenshot](cloudcraft.png)
 
-## API Overview
+### API Overview
 
 /awaylosses/{teamName}	
 /awaywins/{teamName}
@@ -38,7 +38,7 @@ When the user enters the team it wants to see, the database is queried through a
 /winslesseq/{teamName}{runs}
 /losseslesseq/{teamName}{runs}
 	
-## How to Run It
+### How to Run It
 
 Create DynamoDB table called 'MLBGames' with schema:
 	{

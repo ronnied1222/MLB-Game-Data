@@ -27,21 +27,21 @@ When the user enters the team it wants to see, the database is queried through a
 
 ## API Overview
 
-	/awaylosses/{teamName}
-	/awaywins/{teamName}
-	/gameslost/{teamName}
-	/gameswon/{teamName}
-	/homelosses/{teamName}
-	/homewins/{teamName}
-	/winsgreater/{teamName}{runs}
-	/lossesgreater/{teamName}{runs}
-	/winslesseq/{teamName}{runs}
-	/losseslesseq/{teamName}{runs}
+/awaylosses/{teamName}	
+/awaywins/{teamName}
+/gameslost/{teamName}
+/gameswon/{teamName}
+/homelosses/{teamName}
+/homewins/{teamName}
+/winsgreater/{teamName}{runs}
+/lossesgreater/{teamName}{runs}
+/winslesseq/{teamName}{runs}
+/losseslesseq/{teamName}{runs}
 	
 ## How to Run It
 
-	* Create DynamoDB table called 'MLBGames' with schema:
-		* {
+Create DynamoDB table called 'MLBGames' with schema:
+	{
     	"Table": {
         	"AttributeDefinitions": [
             	{

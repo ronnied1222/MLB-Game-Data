@@ -27,41 +27,41 @@ When the user enters the team it wants to see, the database is queried through a
 
 ### API Overview
 
-/awaylosses/{teamName}	
-/awaywins/{teamName}
-/gameslost/{teamName}
-/gameswon/{teamName}
-/homelosses/{teamName}
-/homewins/{teamName}
-/winsgreater/{teamName}{runs}
-/lossesgreater/{teamName}{runs}
-/winslesseq/{teamName}{runs}
-/losseslesseq/{teamName}{runs}
+/awaylosses/{teamName}	<br />
+/awaywins/{teamName}<br />
+/gameslost/{teamName}<br />
+/gameswon/{teamName}<br />
+/homelosses/{teamName}<br />
+/homewins/{teamName}<br />
+/winsgreater/{teamName}{runs}<br />
+/lossesgreater/{teamName}{runs}<br />
+/winslesseq/{teamName}{runs}<br />
+/losseslesseq/{teamName}{runs}<br />
 	
 ### How to Run It
 
-Create DynamoDB table called 'MLBGames' with schema:
-	{
-    	"Table": {
-        	"AttributeDefinitions": [
-            	{
-                	"AttributeName": "gameID",
-                	"AttributeType": "S"
-            	}
-        	],
-        	"TableName": "MLBGames",
-        	"KeySchema": [
-            	{
-               		"AttributeName": "gameID",
-                	"KeyType": "HASH"
-            	}
-        	],
-        	"TableStatus": "ACTIVE",
-        	"CreationDateTime": 1523836695.374,
-        	"ProvisionedThroughput": {
-            	"NumberOfDecreasesToday": 0,
-            	"ReadCapacityUnits": 10,
-            	"WriteCapacityUnits": 10
-        	},
-    	}
+Create DynamoDB table called 'MLBGames' with schema:<br />
+	{<br />
+    	"Table": {<br />
+        	"AttributeDefinitions": [<br />
+            	{<br />
+                	"AttributeName": "gameID",<br />
+                	"AttributeType": "S"<br />
+            	}<br />
+        	],<br />
+        	"TableName": "MLBGames",<br />
+        	"KeySchema": [<br />
+            	{<br />
+               		"AttributeName": "gameID",<br />
+                	"KeyType": "HASH"<br />
+            	}<br />
+        	],<br />
+        	"TableStatus": "ACTIVE",<br />
+        	"CreationDateTime": 1523836695.374,<br />
+        	"ProvisionedThroughput": {<br />
+            	"NumberOfDecreasesToday": 0,<br />
+            	"ReadCapacityUnits": 10,<br />
+            	"WriteCapacityUnits": 10<br />
+        	},<br />
+    	}<br />
 
